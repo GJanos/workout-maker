@@ -1,7 +1,7 @@
 const Schema = require("mongoose").Schema;
 const db = require("../config/db");
 
-const workoutSchema = Schema({
+const workoutSchema = new Schema({
   row: Number,
   col: Number,
   ownerName: String,

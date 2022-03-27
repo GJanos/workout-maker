@@ -1,8 +1,8 @@
 /**
  * Using the template engine render the values into the template
  */
-module.exports = function (viewName) {
+module.exports = function (url) {
   return function (req, res) {
-      return res.render(viewName, res.locals);
+      return res.redirect(url);
   };
 };

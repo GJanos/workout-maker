@@ -1,0 +1,26 @@
+<%- include('reusable/header',{cssFileName: "main" }) %>
+
+  <%- include('reusable/navbar') %>
+
+    <div class="main-placer">
+      <div class="main-formatter">
+
+        <table class="table table-hover table-bordered">
+          <% allExercises.forEach((exercise)=>{%>
+
+            <tr>
+              <td>
+                <a href="/exercise/<%=`${exercise._id}`%>"><%=`${exercise.name}`%></a>
+              </td>
+              <td>
+                <a class="btn btn-primary" href="/exercise/edit/<%=`${exercise._id}`%>">Edit</a>
+                <a class="btn btn-danger" href="/exercise/delete/<%=`${exercise._id}`%>">Delete</a>
+              </td>
+            </tr>
+          <% })%>
+        </table>
+        <a class="btn btn-primary" href="/exercise/edit/new">Add exercise</a>
+      </div>
+    </div>
+
+<%- include('reusable/footer',{jsFileName: "" }) %>

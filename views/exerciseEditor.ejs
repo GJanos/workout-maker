@@ -8,8 +8,8 @@
       <form method="POST">
         <div class="form-group">
 
-          <%- include('reusable/allExercisesDropdown') %>
-
+          <label for="name">Name</label>
+          <input id="name" name="name" value="<%= exercise === undefined ? "" : exercise.name %>"/>
           <label for="exampleFormControlTextarea1" class="ex-piece" style="color: #060b0f; font-weight: bold">Useful
             notes:</label>
           <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="2"><%= exercise === undefined ? "" : exercise.note %></textarea>

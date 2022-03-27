@@ -1,7 +1,7 @@
 const Schema = require("mongoose").Schema;
 const db = require("../config/db");
 
-const exerciseSchema = Schema({
+const exerciseSchema = new Schema({
   name: String,
   note: String,
 });
