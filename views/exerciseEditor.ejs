@@ -1,0 +1,26 @@
+<%- include('reusable/header',{cssFileName: "exercise" }) %>
+
+  <%- include('reusable/navbar') %>
+  <!-- kell a kulon caTEgories vagy csak menjen exercise a konnyedseg kedveert? -->
+
+  <div class="ex-placer">
+    <div class="ex-formatter">
+      <form method="POST">
+        <div class="form-group">
+
+          <%- include('reusable/allExercisesDropdown') %>
+
+          <label for="exampleFormControlTextarea1" class="ex-piece" style="color: #060b0f; font-weight: bold">Useful
+            notes:</label>
+          <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="2"><%= exercise === undefined ? "" : exercise.note %></textarea>
+  
+          <div class="ex-piece">
+            <button type="submit" class="btn btn-primary ex-piece" style="background-color: #1786d5;">Save</button>
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>
+
+<%- include('reusable/footer',{jsFileName: "exercise" }) %>

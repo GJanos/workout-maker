@@ -1,0 +1,23 @@
+<%- include('reusable/header',{cssFileName: "main" }) %>
+
+  <%- include('reusable/navbar') %>
+
+    <div class="main-placer">
+      <div class="main-formatter">
+        <h1>Welcome back, <span class="main-user-color"><%= username  %> </span>!</h1>
+        <p>
+          On this webpage you can make and edit your workouts and add
+          customizable exercises to your routine! Training made easy!
+        </p>
+      </div>
+    </div>
+
+    <div class="main-placer">
+      <div class="main-formatter">
+
+          <%- include('reusable/workoutTable') %>
+        
+      </div>
+    </div>
+
+<%- include('reusable/footer',{jsFileName: "" }) %>

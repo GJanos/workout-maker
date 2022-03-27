@@ -1,0 +1,57 @@
+<%- include('reusable/header',{cssFileName: "login" }) %>
+
+    <div class="login">
+      <div class="login-container">
+        <div class="container">
+          <form method="POST" >
+
+            <div class="mb-3 ">
+              <div class="row login-row">
+                <label class="login-text">Please log in!</label>
+              </div>
+              <div class="row login-row">
+                <div class="col col-3  col-sm-3 ">
+                  <label for="exampleInputEmail1" class="form-label">Username:</label>
+                </div>
+                <div class="col col-7 offset-2 col-sm-8 offset-sm-1">   
+                  <input
+                type="text"
+                name="username"
+                class="form-control"
+                id="exampleInputEmail1"
+                />
+                </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="row login-row">
+                <div class="col col-3  col-sm-3 ">
+                  <label for="exampleInputPassword1" class="form-label">Password:</label>
+                </div>
+                <div class="col col-7 offset-2 col-sm-8 offset-sm-1">   
+                  <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="exampleInputPassword1"
+              />
+                </div>
+            </div>
+
+            <div class="mb-3 ">
+              <div class="row login-row">
+                <div class="col col-5 offset-1 ">
+                  <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+                <div class="col col-5">   
+                  <button type="submit" 
+                  name="register" class="btn btn-primary">Register</button>
+                </div>
+            </div> 
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+<%- include('reusable/footer',{jsFileName: "" }) %>

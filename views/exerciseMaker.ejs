@@ -1,0 +1,29 @@
+<%- include('reusable/header',{cssFileName: "exercise" }) %>
+
+<%- include('reusable/navbar') %>
+
+    <div class="ex-placer">
+      <div class="ex-formatter">
+        <form method="POST">
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="ex-piece" style="color: #060b0f; font-weight: bold">Exercise
+              name:</label>
+            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="biceps curl" />
+          </div>
+
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="ex-piece" style="color: #060b0f; font-weight: bold">Useful
+              notes:</label>
+            <textarea class="form-control" name="note"
+            placeholder="10x5 for 10 minustes" id="exampleFormControlTextarea1" rows="2"></textarea>
+          </div>
+          <div class="ex-piece">
+            <button type="submit" class="btn btn-primary ex-piece" style="background-color: #1786d5;">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+<%- include('reusable/footer',{jsFileName: "exercise" }) %>

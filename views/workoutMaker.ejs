@@ -1,0 +1,67 @@
+<%- include('reusable/header',{cssFileName: "workout" }) %>
+
+  <%- include('reusable/navbar') %>
+
+    <div class="wo-placer">
+      <div class="wo-formatter">
+        <div class="table-container">
+          <%- include('reusable/workoutTable') %>
+        </div>
+
+
+        <form method="POST">
+          <div class="wo-buttons">
+
+            <div class="section-input">
+              <div class="section-wrapper">
+                <div class="section-title-input">
+                  <h6>Size of workout table</h6>
+                </div>
+                <div class="section-title-input">
+                  <div class="section-input-row">
+                    <input type="text" class="form-control" name="tableRow" placeholder="Row" />
+                  </div>
+                  <div class="section-input-row">
+                    <input type="text" class="form-control" name="tableCol" placeholder="Col" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-wrapper">
+                <div class="section-title-input">
+                  <h6>Select where to place exercise</h6>
+                </div>
+                <div class="section-title-input">
+                  <div class="section-input-row">
+                    <input type="text" class="form-control" name="exerciseRow" placeholder="Row" />
+                  </div>
+                  <div class="section-input-row">
+                    <input type="text" class="form-control" name="exerciseCol" placeholder="Col" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-wrapper">
+                <div class="section-title-input">
+                  <div class="section-input-row">
+                    <!-- itt valami name="" attributumot be kell rakni majd -->
+                    <%- include('reusable/allExercisesDropdown') %>
+                  </div>
+
+                  <!-- save property? -->
+                  <div class="section-input-row">
+                    <button type="submit" class="btn btn-primary wo-element" style="background-color: #1786d5">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+        </form>
+      </div>
+    </div>
+
+    <%- include('reusable/footer',{jsFileName: "exercise" }) %>

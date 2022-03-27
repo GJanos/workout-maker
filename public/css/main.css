@@ -1,0 +1,20 @@
+.main-placer {
+  display: flex;
+  justify-content: center;
+}
+.main-formatter {
+  display: block;
+  width: 80vw;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid rgb(14, 13, 13);
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.li{
+  margin-right: 1rem;
+  margin-left: 1rem;
+}

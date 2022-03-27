@@ -1,0 +1,103 @@
+.body{
+  margin: 0px;
+  padding: 0px;
+}
+
+.wo-placer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wo-formatter {
+  display: block;
+  width: 90vw;
+  height: 85vh;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid rgb(14, 13, 13);
+  padding: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 5px 10px 8px #888888;
+}
+.wo-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.wo-element {
+  margin: 1rem 2rem;
+}
+
+
+/* //// */
+.section-input{
+  display: block;
+}
+
+.section-wrapper {
+  height: 20%;
+  margin-bottom: 0.7rem;
+}
+
+.section-title-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  width: 100%;
+}
+
+/* .section-input {
+} */
+
+.section-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.h6{
+  margin: 0px;
+  padding: 0px;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.2rem 0.2rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: #212529;
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: #212529;
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: #212529;
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 95%;
+    /* margin-bottom: 1rem; */
+    color: #212529;
+    vertical-align: top;
+    border-color: #dee2e6;
+}
+
+.table-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 60%;
+  height: 55%;
+  width: 100%;
+}
+
+/* .section-input-col {
+} */
