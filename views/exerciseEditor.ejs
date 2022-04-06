@@ -4,15 +4,15 @@
   <!-- kell a kulon caTEgories vagy csak menjen exercise a konnyedseg kedveert? -->
 
   <div class="ex-placer">
-    <div class="ex-formatter">
+    <div class="ex-info-formatter">
       <form method="POST">
         <div class="form-group">
 
-          <label for="name">Name</label>
-          <input id="name" name="name" value="<%= exercise === undefined ? "" : exercise.name %>"/>
-          <label for="exampleFormControlTextarea1" class="ex-piece" style="color: #060b0f; font-weight: bold">Useful
+          <label for="name" class="ex-piece" style="color: #060b0f; font-weight: bold">Name</label>
+          <input id="name" name="name" style="width: 100%;" value="<%= exercise === undefined ? "" : exercise.name %>" />
+          <label for="note" class="ex-piece" style="color: #060b0f; font-weight: bold">Useful
             notes:</label>
-          <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="2"><%= exercise === undefined ? "" : exercise.note %></textarea>
+          <input id="note" name="note" style="width: 100%;" value="<%= exercise === undefined ? "" : exercise.note %>" />
   
           <div class="ex-piece">
             <button type="submit" class="btn btn-primary ex-piece" style="background-color: #1786d5;">Save</button>

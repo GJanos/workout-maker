@@ -4,13 +4,7 @@ const db = require("../config/db");
 const workoutSchema = new Schema({
   row: Number,
   col: Number,
-  ownerName: String,
-  _exercises: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Exercise",
-    },
-  ],
+  exercises: [],
 });
 
 

@@ -3,15 +3,14 @@ var AuthMW = require("../middleware/generic/auth");
 var RenderMW = require("../middleware/generic/render");
 
 //user
-var GetUserMW = require("../middleware/user/getUser");
 var CheckRegisterMW = require("../middleware/user/checkRegister");
-var SaveUserMW = require("../middleware/user/saveUser");
 var CheckLoginMW = require("../middleware/user/checkLogin");
 
 //exercise
 var GetExerciseMW = require("../middleware/exercise/getExercise");
 var SaveExerciseMW = require("../middleware/exercise/saveExercise");
 var GetAllExercisesMW = require("../middleware/exercise/getAllExercises");
+var GetSelectedExerciseMW = require("../middleware/exercise/getSelectedExercise");
 var DeleteExerciseMW = require("../middleware/exercise/deleteExercise");
 
 //workout
@@ -21,86 +20,116 @@ var GetTablePlacementMW = require("../middleware/workout/getTablePlacement");
 var SaveWorkoutMW = require("../middleware/workout/saveWorkout");
 var MakeNewTableMW = require("../middleware/workout/makeNewTable");
 
+//navigation
 var RedirectMW = require("../middleware/generic/redirect");
 
-// var userModel = require("../models/user");
+// models for mongoose db
 var workoutModel = require("../models/workout");
 var exerciseModel = require("../models/exercise");
+var userModel = require("../models/user");
 
 module.exports = function (app) {
   var objectRepository = {
-    // userModel: userModel,
+    userModel: userModel,
     workoutModel: workoutModel,
     exerciseModel: exerciseModel,
   };
 
-  
-
-  app.use(
-    "/register",
-    GetUserMW(objectRepository),
-    CheckRegisterMW(objectRepository),
-    SaveUserMW(objectRepository),
-    RenderMW("register")
-  );
-
+  // main page
   app.get(
     "/main",
+    AuthMW(objectRepository),
     GetWorkoutMW(objectRepository),
     RenderMW("main")
   );
 
+  // exercise related
   app.post(
     "/exercise/edit/:id",
+    AuthMW(objectRepository),
     SaveExerciseMW(objectRepository),
-      RedirectMW("/exercise")
+    RedirectMW("/exercise")
   );
 
   app.get(
-      "/exercise/edit/:id",
-      GetExerciseMW(objectRepository),
-      RenderMW("exerciseEditor")
+    "/exercise/edit/:id",
+    AuthMW(objectRepository),
+    GetExerciseMW(objectRepository),
+    RenderMW("exerciseEditor")
   );
 
   app.get(
-      "/exercise/:id",
-      GetExerciseMW(objectRepository),
-      RenderMW("exerciseView")
-  )
+    "/exercise/:id",
+    AuthMW(objectRepository),
+    GetExerciseMW(objectRepository),
+    RenderMW("exerciseView")
+  );
 
   app.get(
-      "/exercise",
-      GetAllExercisesMW(objectRepository),
-      RenderMW("exerciseList")
-  )
+    "/exercise",
+    AuthMW(objectRepository),
+    GetAllExercisesMW(objectRepository),
+    RenderMW("exerciseList")
+  );
 
   app.get(
     "/exercise/delete/:id",
+    AuthMW(objectRepository),
     DeleteExerciseMW(objectRepository),
-      RedirectMW("/exercise")
+    RedirectMW("/exercise")
   );
 
-  // app.use(
-  //   "/workout/new",
-  //   AuthMW(objectRepository),
-  //   GetWorkoutMW(objectRepository),
-  //   GetAllExercisesMW(objectRepository),
-  //   GetSelectedExerciseMW(objectRepository),
-  //   GetTableSizeMW(objectRepository),
-  //   GetTablePlacementMW(objectRepository),
-  //   MakeNewTableMW(objectRepository),
-  //   SaveWorkoutMW(objectRepository),
-  //   RenderMW(objectRepository, "workoutMaker")
-  // );
-
-  app.use(
-    "/",
-    GetUserMW(objectRepository),
-    CheckLoginMW(objectRepository),
-    RenderMW("index")
+  // workout related
+  app.get(
+    "/workout/exercise/:id",
+    AuthMW(objectRepository),
+    GetWorkoutMW(objectRepository),
+    GetAllExercisesMW(objectRepository),
+    GetSelectedExerciseMW(objectRepository),
+    RenderMW("workoutMaker")
   );
 
-  app.use((err ,req, res, next) => {
+  app.post(
+    "/workout/exercise/:id",
+    AuthMW(objectRepository),
+    GetWorkoutMW(objectRepository),
+    GetSelectedExerciseMW(objectRepository),
+    GetTableSizeMW(objectRepository),
+    GetTablePlacementMW(objectRepository),
+    MakeNewTableMW(objectRepository),
+    SaveWorkoutMW(objectRepository),
+    RedirectMW("/workout")
+  );
+
+  app.get(
+    "/workout",
+    AuthMW(objectRepository),
+    GetWorkoutMW(objectRepository),
+    GetAllExercisesMW(objectRepository),
+    RenderMW("workoutMaker")
+  );
+
+  app.post(
+    "/workout",
+    AuthMW(objectRepository),
+    GetWorkoutMW(objectRepository),
+    GetTableSizeMW(objectRepository),
+    SaveWorkoutMW(objectRepository),
+    RedirectMW("/workout")
+  );
+
+  // register
+  app.get("/register", RenderMW("register"));
+
+  app.post("/register", CheckRegisterMW(objectRepository), RedirectMW("/"));
+
+  // login
+  app.get("/", RenderMW("index"));
+
+  app.post("/", CheckLoginMW(objectRepository), RedirectMW("/main"));
+
+  // error handling
+  app.use((err, req, res, next) => {
     res.end("Problem occured!");
     console.log(err);
   });

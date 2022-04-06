@@ -1,8 +1,21 @@
+const requireOption = require("../generic/options");
 /**
- * ha helyes a req.body es meg nincs ilyen felhasznalo+jelszo kombo akkor redirect /main re ha van ilyen redirect / re ha hibas akkor is
+ * searches for matching user, if found authenticates it
  */
 module.exports = function (objectrepository) {
-  return function (req, res, next) {
+  const userModel = requireOption(objectrepository, "userModel");
+  return async function (req, res, next) {
+    if (req.body.username !== "" && req.body.password !== "") {
+      const user = await userModel.findOne({
+        username: req.body.username,
+        password: req.body.password,
+      });
+      if (user !== null) {
+        req.session.authenticated = true;
+        req.session.user = user;
+        return next();
+      } else return res.redirect("/");
+    }
     return next();
   };
 };

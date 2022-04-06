@@ -1,6 +1,6 @@
 const requireOption = require("../generic/options");
 /**
- * get-re next postra req.body/global object rereakja az adatokat majd next
+ * if id = new makes a placeholder object otherwise finds one ex from db and stores it
  */
 module.exports = function (objectrepository) {
   const exerciseModel = requireOption(objectrepository, "exerciseModel");

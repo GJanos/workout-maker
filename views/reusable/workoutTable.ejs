@@ -1,30 +1,26 @@
 <table class="table table-hover table-bordered">
-    <% for(var i=0; i < workout.row+1; i++) {%>
-        <% if(i==0){ %>
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <% for(var j=0; j < workout.col; j++) {%>
-                        <th scope="col">
-                            <%=`${j+1}. day` %>
-                        </th>
-                        <% } %>
-                </tr>
-            </thead>
-        <% } %>
-        <% if(i> 0){ %>
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <% for(var j=0; j < workout.col; j++) {%>
+                <th scope="col">
+                    <%=`${j+1}. day` %>
+                </th>
+                <% } %>
+        </tr>
+    </thead>
+    <% for(var i=0; i < workout.row; i++) {%>
             <tr>
             <th scope="row">
-            <%=`${i}`%>
+            <%=`${i+1}`%>
             </th>
             <% for(var j=0; j < workout.col; j++) {%>
                 <td scope="col">
-                <% if(workout.exercises[i-1][j] !==null ){%>
-                <%= workout.exercises[i-1][j].name %>
+                <% if(workout.exercises[(i*workout.col)+j]){%>
+                    <%= workout.exercises[(i*workout.col)+j].name %>
                 <% } %>
                 </td>
             <% } %>
             </tr>
-        <%} %>
     <% } %>
 </table>

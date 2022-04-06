@@ -1,11 +1,15 @@
-/**
- * User model (mock)
- * @constructor
- */
-// var User = function () {};
+const Schema = require("mongoose").Schema;
+const db = require("../config/db");
 
-User = {
+const userSchema = new Schema({
+  username: String,
+  password: String,
+  workout: {
+    type: Schema.Types.ObjectId,
+    ref: "Workout",
+  },
+});
 
-}
+const User = db.model("User", userSchema);
 
 module.exports = User;

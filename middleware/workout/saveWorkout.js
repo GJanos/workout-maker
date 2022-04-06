@@ -1,13 +1,13 @@
 /**
- * local vagy body.n levo objectet menti db-be post hatasara getre next
+ * saves workout
  */
 module.exports = function (objectrepository) {
   return function (req, res, next) {
     
     
-    console.log(res.locals.workout.exercises);
-    console.log(res.locals);
-    
-    return next();
+    res.locals.workout.save((err) => {
+      if (err) return next(err);
+      return next();
+    });
   };
 };

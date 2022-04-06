@@ -1,7 +1,7 @@
 const requireOption = require("../generic/options");
 
 /**
- * getre  lekeri az osszes exerciset esetleg a lekero fugv egy bool 	flaget is bilnethetnek hogy ne keregessek ugyan azt folyton le postra semmi
+ * finds all the exercises from db then puts it into res.locals
  */
 module.exports = function (objectrepository) {
 

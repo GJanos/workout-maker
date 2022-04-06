@@ -3,7 +3,7 @@
     <div class="login">
       <div class="login-container">
         <div class="container">
-          <form action="index.html">
+          <form method="POST">
 
             <div class="mb-3 ">
               <div class="row login-row">
@@ -16,6 +16,7 @@
                 <div class="col col-7 offset-2 col-sm-8 offset-sm-1">   
                   <input
                 type="text"
+                name="username"
                 class="form-control"
                 id="exampleInputEmail1"
                 />
@@ -30,6 +31,7 @@
                 <div class="col col-7 offset-2 col-sm-8 offset-sm-1">   
                   <input
                 type="password"
+                name="password"
                 class="form-control"
                 id="exampleInputPassword1"
               />
@@ -38,8 +40,11 @@
 
             <div class="mb-3 ">
               <div class="row login-row">
-                <div class="col col-12 login-middle">   
+                <div class="col col-6 login-middle">
                   <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <div class="col col-6 login-middle">
+                  <a href="/" class="btn btn-primary">Back</a>
                 </div>
             </div> 
           </form>

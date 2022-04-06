@@ -1,22 +1,19 @@
 /**
- * ellenorzi megfeleloek e a szamok, rangeben vannak e kisebek mint tablameret ha nincs akkor redirect ide postra, getre next
+ * check if ex coordinate are in range and valid, if yes stores them
  */
 module.exports = function (objectrepository) {
   return function (req, res, next) {
-    if (
-      req.body.exerciseRow !== undefined &&
-      req.body.exerciseCol !== undefined
-    ) {
+    
       if (
+        // row and col are in range
+        parseInt(req.body.exerciseRow) !== NaN &&
+        parseInt(req.body.exerciseCol) !== NaN &&
         req.body.exerciseRow <= res.locals.workout.row &&
-        req.body.exerciseCol <= res.locals.workout.col 
-
+        req.body.exerciseCol <= res.locals.workout.col
       ) {
-        res.locals.exercise.row = req.body.exerciseRow;
-        res.locals.exercise.col = req.body.exerciseCol;
+        res.locals.row = req.body.exerciseRow;
+        res.locals.col = req.body.exerciseCol;
       }
+      return next();
     }
-
-    return next();
-  };
 };

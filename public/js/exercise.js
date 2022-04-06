@@ -3,7 +3,6 @@ const dropdownContainer2 = document.getElementById("to-toggle-3");
 const dropdownOther2 = document.getElementById("to-toggle-4");
 
 dropdownCategories2.addEventListener("click", function () {
-  console.log("szia");
   dropdownContainer2.classList.toggle("show");
   dropdownOther2.classList.toggle("show");
   dropdownCategories2.ariaExpanded = true;

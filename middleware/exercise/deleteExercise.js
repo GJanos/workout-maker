@@ -1,6 +1,6 @@
 const requireOption = require("../generic/options");
 /**
- * exerciset elmenti db-be pesze ha get akkor next
+ * deletes ex from db based on id
  */
 module.exports = function (objectrepository) {
 
@@ -8,7 +8,8 @@ module.exports = function (objectrepository) {
 
   return async function (req, res, next) {
       await exerciseModel.findOneAndRemove(
-          { _id: req.params.id });
+          { _id: req.params.id }
+      );
       return next();
   };
 };

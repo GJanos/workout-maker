@@ -4,12 +4,18 @@
   <!-- kell a kulon caTEgories vagy csak menjen exercise a konnyedseg kedveert? -->
 
   <div class="ex-placer">
-    <div class="ex-formatter">
-        <div class="form-group">
+    <div class="ex-info-formatter">
+      <div class=" ex-placer ex-info-header">
           <h2><%= exercise === undefined ? "Unknown" : exercise.name %></h2>
-          <p><%= exercise === undefined ? "No note" : exercise.note %></p>
-          <a class="btn btn-primary" href="/exercise/edit/<%=`${exercise._id}`%>">Edit</a>
-          <a class="btn btn-danger" href="/exercise/delete/<%=`${exercise._id}`%>">Delete</a>
+      </div>
+      <div class="ex-info-note">
+        <p>
+          <%= exercise===undefined ? "No note" : exercise.note %>
+        </p>
+      </div>
+      <div class=" ex-placer">
+        <a class="btn btn-primary ex-info-button" href="/exercise/edit/<%=`${exercise._id}`%>">Edit</a>
+        <a class="btn btn-danger ex-info-button" href="/exercise/delete/<%=`${exercise._id}`%>">Delete</a>
         </div>
     </div>
   </div>

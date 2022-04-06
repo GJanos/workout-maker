@@ -1,25 +1,30 @@
-<%- include('reusable/header',{cssFileName: "main" }) %>
+<%- include('reusable/header',{cssFileName: "exercise" }) %>
 
   <%- include('reusable/navbar') %>
 
-    <div class="main-placer">
-      <div class="main-formatter">
+    <div class="ex-placer">
+      <div class="ex-list-formatter">
 
         <table class="table table-hover table-bordered">
           <% allExercises.forEach((exercise)=>{%>
 
             <tr>
-              <td>
-                <a href="/exercise/<%=`${exercise._id}`%>"><%=`${exercise.name}`%></a>
+              <td class="table-row">
+                <p class="table-name">
+                  <%=`${exercise.name}`%>
+                </p>
               </td>
               <td>
-                <a class="btn btn-primary" href="/exercise/edit/<%=`${exercise._id}`%>">Edit</a>
-                <a class="btn btn-danger" href="/exercise/delete/<%=`${exercise._id}`%>">Delete</a>
+                <a class="btn btn-success table-button" href="/exercise/<%=`${exercise._id}`%>">Info</a>
+                <a class="btn btn-primary table-button" href="/exercise/edit/<%=`${exercise._id}`%>">Edit</a>
+                <a class="btn btn-danger table-button" href="/exercise/delete/<%=`${exercise._id}`%>">Delete</a>
               </td>
             </tr>
           <% })%>
         </table>
-        <a class="btn btn-primary" href="/exercise/edit/new">Add exercise</a>
+        <div class="ex-placer">
+          <a class="ex-add-button  btn btn-primary" href="/exercise/edit/new">Add exercise</a>
+        </div>
       </div>
     </div>
 
