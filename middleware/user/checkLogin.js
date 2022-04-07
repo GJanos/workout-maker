@@ -13,7 +13,8 @@ module.exports = function (objectrepository) {
       if (user !== null) {
         req.session.authenticated = true;
         req.session.user = user;
-        return next();
+        return res.redirect(`/main/${req.session.user._id}`);
+        
       } else return res.redirect("/");
     }
     return next();

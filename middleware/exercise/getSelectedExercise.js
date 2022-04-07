@@ -1,6 +1,6 @@
 const requireOption = require("../generic/options");
 /**
- * gtts selected ex id from req.params.id and stores it
+ * gets selected ex id from req.params.id and stores it
  */
 module.exports = function (objectrepository) {
   const exerciseModel = requireOption(objectrepository, "exerciseModel");

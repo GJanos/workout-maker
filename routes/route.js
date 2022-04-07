@@ -5,6 +5,7 @@ var RenderMW = require("../middleware/generic/render");
 //user
 var CheckRegisterMW = require("../middleware/user/checkRegister");
 var CheckLoginMW = require("../middleware/user/checkLogin");
+var GetUserMW = require("../middleware/user/getUser");
 
 //exercise
 var GetExerciseMW = require("../middleware/exercise/getExercise");
@@ -37,8 +38,9 @@ module.exports = function (app) {
 
   // main page
   app.get(
-    "/main",
+    "/main/:id",
     AuthMW(objectRepository),
+    GetUserMW(objectRepository),
     GetWorkoutMW(objectRepository),
     RenderMW("main")
   );
@@ -126,7 +128,7 @@ module.exports = function (app) {
   // login
   app.get("/", RenderMW("index"));
 
-  app.post("/", CheckLoginMW(objectRepository), RedirectMW("/main"));
+  app.post("/", CheckLoginMW(objectRepository));
 
   // error handling
   app.use((err, req, res, next) => {
